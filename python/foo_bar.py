@@ -4,12 +4,10 @@ def prime_square_check():
     prime = True
     squarey = False
     
-    # for s in range(1, i):
-    #   if (s * s == i) and (i % s == s):
-    #     squarey = True
-
-    if i**i == i * i:
-      squarey = True
+    for s in range(1, i):
+      if (s * s == i) and (i / s == s):
+        squarey = True
+        break
 
     for p in range(2, i):
       if (i % p == 0):
