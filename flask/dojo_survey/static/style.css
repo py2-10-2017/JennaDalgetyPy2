@@ -1,0 +1,26 @@
+form{
+  border: 2px solid black;
+  padding: 10px;
+  width: 250px;
+  height: 320px;
+  position: absolute;
+  left: 33%;
+  top: 33%;
+}
+#right{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+label{
+  text-align: left;
+  clear: all;
+  float: left;
+}
+button{
+  position: absolute;
+  left: 150px;
+  bottom: 0px;
+  background-color: #2196f3;
+  box-shadow: 5px 5px 2px #888888;
+}
