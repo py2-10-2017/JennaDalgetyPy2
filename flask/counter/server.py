@@ -11,11 +11,9 @@ def index():
 
     session["count"] = 0
 
-    try:
-        return redirect("/add")
-    except ValueError:
+    return render_template("index.html")
 
-        return render_template("index.html")
+   
 
 
 
