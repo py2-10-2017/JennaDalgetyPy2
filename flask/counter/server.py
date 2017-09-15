@@ -1,4 +1,4 @@
-from flask import Flask, session, render_template
+from flask import Flask, session, render_template, redirect
 
 app = Flask(__name__)
 
@@ -9,15 +9,23 @@ app.secret_key = "92qf8ybntybn49iunvu"
 
 def index():
 
-    counter = 1
+    session["count"] = 0
 
-    return render_template("index.html")
+    try:
+        return redirect("/add")
+    except ValueError:
 
-   
-    counter += 1
+        return render_template("index.html")
 
-    session["counter"] = counter
 
+
+@app.route("/add")
+
+def add_to_count():
+
+    session["count"] += 1
+
+    return redirect("/")
 
 
 app.run(debug=True)
