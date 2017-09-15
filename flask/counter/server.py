@@ -9,25 +9,15 @@ app.secret_key = "92qf8ybntybn49iunvu"
 
 def index():
 
-    if not "count" in session:
-        session["count"] = 0
+    try:
+        session["count"] += 1
+    except:
+        if not "count" in session:
+            session["count"] = 0
 
 
     return render_template("index.html")
 
-   
-
-
-
-@app.route("/add")
-
-def add_to_count():
-
-    session["count"] += 1
-
-    print session["count"]
-
-    return redirect("/")
 
 
 app.run(debug=True)
