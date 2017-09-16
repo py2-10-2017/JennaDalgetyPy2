@@ -23,14 +23,13 @@ def guess():
 
     past_guesses = []
 
-    session["answer"] = 1
+    session["answer"] = random.randint(1, 10)
 
-    session["guess"] = request.form["guess"]
+    session["guess"] = int(request.form["guess"])
 
     if session["guess"] == session["answer"]:
-        print("rendering YOU WIN")
         return render_template("you_win.html")
-    if session["guess"] in past_guesses:
+    elif session["guess"] in past_guesses:
         pass
     else:
         past_guesses.append(session["guess"])
