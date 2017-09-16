@@ -7,6 +7,10 @@ app = Flask(__name__)
 
 app.secret_key = "098hf7b5836b83724bfn3"
 
+answer = random.randint(1, 10)
+
+past_guesses = []
+
 
 @app.route("/")
 
@@ -19,11 +23,9 @@ def index():
 
 def guess():
 
+    session["answer"] = answer
+
     print("in Guess function")
-
-    past_guesses = []
-
-    session["answer"] = random.randint(1, 10)
 
     session["guess"] = int(request.form["guess"])
 
