@@ -15,18 +15,22 @@ def index():
     return render_template("index.html")
 
 
-app.route("/guess")
+@app.route("/guess", methods=["POST"])
 
 def guess():
+
+    print("in Guess function")
 
     past_guesses = []
 
     session["answer"] = 1
 
+    guess = session["guess"]
+
     if session["guess"] in past_guesses:
         pass
     elif session["guess"] == session["answer"]:
-        return render_template(you_win.html)
+        return render_template("you_win.html")
     else:
         past_guesses.append(session["guess"])
         if session["guess"] < session["answer"]:
