@@ -1,0 +1,12 @@
+#wrapper{
+    height: 900px;
+    width: 900px;
+}
+#guessing_box{
+    position: relative;
+    left: 25%;
+    top: 20%;
+    height: 500px;
+    width: 500px;
+    text-align: center;
+}
