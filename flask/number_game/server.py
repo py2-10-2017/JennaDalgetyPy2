@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, session, redirect
+from flask import Flask, render_template, session, redirect, request
 
 import random
 
@@ -25,12 +25,13 @@ def guess():
 
     session["answer"] = 1
 
-    guess = session["guess"]
+    session["guess"] = request.form["guess"]
 
+    if session["guess"] == session["answer"]:
+        print("rendering YOU WIN")
+        return render_template("you_win.html")
     if session["guess"] in past_guesses:
         pass
-    elif session["guess"] == session["answer"]:
-        return render_template("you_win.html")
     else:
         past_guesses.append(session["guess"])
         if session["guess"] < session["answer"]:
