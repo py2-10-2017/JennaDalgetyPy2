@@ -12,7 +12,7 @@ answer = random.randint(1, 10)
 past_guesses = []
 
 
-@app.route("/")
+@app.route("/", methods=["POST", "GET"])
 
 def index():
 
