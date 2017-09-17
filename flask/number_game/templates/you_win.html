@@ -23,15 +23,17 @@
 </head>
 <body>
   <div id=wrapper>
+    <div id="guessing_box">
       <h1>Welcome to the Great Number Game!</h1>
-        <h3>I am thinking of a number between 1 and 10</h3>
-        <h3>Take a guess!</h3>
+      <h3>I am thinking of a number between 1 and 100</h3>
+      <h3>Take a guess!</h3>
+      <div class="guess_right">
         <form action="/reset" method="post" accept-charset="utf-8">
-            <div id="guess_right">
-                <h2>{{ session["answer"] }} was the number!</h2>
-                <button type="submit">Play again!</button>
-            </div>
+          <h2>{{ session["answer"] }} was the number!</h2>
+          <button class="win" type="submit">Play again!</button>
         </form>
+      </div>
+    </div>
   </div>
 </body>
 </html>

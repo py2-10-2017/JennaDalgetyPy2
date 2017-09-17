@@ -13,7 +13,7 @@ app.secret_key = "098hf7b5836b83724bfn3"
 def index():
 
     if not "answer" in session:
-        session["answer"] = random.randint(1, 10)
+        session["answer"] = random.randint(1, 100)
 
 
     return render_template("index.html")
@@ -23,9 +23,10 @@ def index():
 
 def guess():
 
-    print "guess:", session["guess"], "answer:", session["answer"]
 
     session["guess"] = int(request.form["guess"])
+    
+    print "guess:", session["guess"], "answer:", session["answer"]
 
     if session["guess"] == session["answer"]:
         return render_template("you_win.html")
@@ -41,7 +42,7 @@ def guess():
 
 def reset():
 
-    session["answer"] = random.randint(1, 10)
+    session["answer"] = random.randint(1, 100)
 
     return redirect("/")
 

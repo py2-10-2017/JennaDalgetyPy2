@@ -10,3 +10,28 @@
     width: 500px;
     text-align: center;
 }
+.wrong_box{
+    height: 120px;
+    width: 300px;
+    background-color: red;
+    position: relative;
+    left: 100px;
+    top: 20%;
+    padding-top: 70px;
+    margin-bottom: 50px;
+    color: white;
+}
+.guess_right{
+    height: 200px;
+    width: 300px;
+    background-color: green;
+    position: relative;
+    left: 100px;
+    top: 10%;
+    padding-top: 70px;
+    margin-bottom: 50px;
+    color: white;
+}
+.win{
+    background-color: white;
+}
