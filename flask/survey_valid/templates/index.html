@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="style.css") }}">
+    <style>
+
+    </style>
+    <script src="http://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>  
+    <script type="text/javascript">
+
+      (document).ready(function(){
+        console.log("jQuery has loaded properly")
+
+        
+
+      });
+
+    </script>
+    <title>Dojo Survey</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in session["errors"] %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="/user" method="POST" accept-charset="utf-8">
+        <label>Name:</label>
+        <div id=right>
+            <input type="text" name="name">
+        </div>
+        <label>Dojo Location:</label>
+        <div id=right>
+            <select name="location">
+            <option value="San Jose">San Jose</option>
+            <option value="Chicago">Chicago</option>
+            <option value="Seattle">Seattle</option>
+            </select>
+        </div>
+        <label>Favorite Language:</label>
+        <div id=right>
+            <select name="language" >
+            <option value="Python">Python</option>
+            <option value="HTML">HTML</option>
+            <option value="Ruby">Ruby</option>
+            </select>
+        </div>
+        <label>Comment (optional):</label>
+        <textarea name="comment" rows="5", cols="35"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
