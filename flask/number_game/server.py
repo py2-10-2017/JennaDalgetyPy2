@@ -23,10 +23,11 @@ def index():
 
 def guess():
 
+    print "guess:", session["guess"], "answer:", session["answer"]
+
     session["guess"] = int(request.form["guess"])
 
     if session["guess"] == session["answer"]:
-        session["answer"] = random.randint(1, 10)
         return render_template("you_win.html")
     else:
         if session["guess"] < session["answer"]:
@@ -34,6 +35,15 @@ def guess():
         elif session["guess"] > session["answer"]:
 
             return render_template("too_high.html")
+
+
+@app.route("/reset", methods=["POST"])
+
+def reset():
+
+    session["answer"] = random.randint(1, 10)
+
+    return redirect("/")
 
 
 
