@@ -1,0 +1,45 @@
+#wrapper{
+    height: 900px;
+    width: 1000px;
+}
+#gold_count{
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    position: relative;
+    top: 20px;
+}
+.counter{
+    padding-left: 10px;
+    position: relative;
+    top: -50px;
+    left: 100px;
+    border: 2px solid black;
+}
+#building_box{
+    position: relative;
+    top: 0%;
+    left: 10%;
+    height: 230px;
+}
+.building{
+    vertical-align: top;
+    height: 180px;
+    width: 18%;
+    padding: 15px 5px 5px 5px;
+    display: inline-block;
+    border: 2px solid black;
+    margin: 10px;
+    text-align: center;
+}
+#activity_box{
+    margin-left: 20px;
+    position: relative;
+    top: 100px;
+}
+.tracker{
+    height: 250px;
+    width: 900px;
+    border: 2px solid black;
+    padding: 10px;
+}

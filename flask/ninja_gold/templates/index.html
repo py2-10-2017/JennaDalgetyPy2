@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="style.css") }}">
+  <style>
+
+  </style>
+  <script src="http://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>  
+  <script type="text/javascript">
+
+    (document).ready(function(){
+      console.log("jQuery has loaded properly")
+
+      
+
+    });
+
+    </script>
+  <title>Ninja Gold!</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="gold_count">
+            <p>Your Gold:</p>
+            <div class="counter">
+              {{ session["gold"] }}
+            </div>
+        </div>
+        <div id="building_box">
+            <div class="building">
+                <h4>Farm</h4>
+                <p>(earns 10-20 golds)</p>
+                <form action="/process_money" method="post">
+                <input type="hidden" name="building" value="farm" />
+                <input type="submit" value="Find Gold!"/>
+                </form> 
+            </div>
+            <div class="building">
+                <h4>Cave</h4>
+                <p>(earns 5-10 golds)</p>
+                <form action="/process_money" method="post">
+                <input type="hidden" name="building" value="cave" />
+                <input type="submit" value="Find Gold!"/>
+                </form> 
+            </div>
+            <div class="building">
+                <h4>House</h4>
+                <p>(earns 2-5 golds)</p>
+                <form action="/process_money" method="post">
+                <input type="hidden" name="building" value="house" />
+                <input type="submit" value="Find Gold!"/>
+                </form> 
+            </div>
+            <div class="building">
+                <h4>Casino</h4>
+                <p>(earns/takes 0-50 golds)</p>
+                <form action="/process_money" method="post">
+                <input type="hidden" name="building" value="casino" />
+                <input type="submit" value="Find Gold!"/>
+                </form> 
+            </div>
+        </div>
+        <div id="activity_box">
+            <p>Activities:</p>
+            <div class="tracker">
+                {% for message in session['activities'] %}
+                    {% if 'lost' in message %}
+                        <p style='color: red;'>{{ message }}</p>
+                    {% else %}
+                        <p style='color: green;'>{{ message }}</p>
+                    {% endif %}
+            {% endfor %}
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
