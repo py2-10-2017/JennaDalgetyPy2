@@ -9,9 +9,6 @@ app.secret_key = "iuvbierwvbewurvybch 9u8yu3hui"
 
 def index():
 
-    if not "errors" in session:
-        session["errors"] = []
-
     return render_template("index.html")
 
 
@@ -21,7 +18,7 @@ def index():
 def create_user():
 
     if len(request.form["name"]) < 1:
-        session["errors"].append(flash("Name cannot be blank"))
+        flash("Name cannot be blank")
         print("appending 1")
         return redirect("/")
     else:
@@ -29,10 +26,10 @@ def create_user():
     session["location"] = request.form["location"]
     session["language"] = request.form["language"]
     if len(request.form["comment"]) > 120:
-        session["errors"].append(flash("Comment cannot be longer than 120 characters"))
+        flash("Comment cannot be longer than 120 characters")
         return redirect("/")
     elif len(request.form["comment"]) < 1:
-        session["errors"].append(flash("Comment cannot be blank"))
+        flash("Comment cannot be blank")
     else:
         session["comment"] = request.form["comment"]
 
