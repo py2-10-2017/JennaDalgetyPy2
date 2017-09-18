@@ -17,23 +17,28 @@ def index():
 
 def create_user():
 
+    errors = False
+
     if len(request.form["name"]) < 1:
         flash("Name cannot be blank")
-        print("appending 1")
-        return redirect("/")
+        errors = True
     else:
         session["name"] = request.form["name"]
-    session["location"] = request.form["location"]
-    session["language"] = request.form["language"]
+        session["location"] = request.form["location"]
+        session["language"] = request.form["language"]
     if len(request.form["comment"]) > 120:
         flash("Comment cannot be longer than 120 characters")
-        return redirect("/")
+        errors = True
     elif len(request.form["comment"]) < 1:
         flash("Comment cannot be blank")
+        errors = True
     else:
         session["comment"] = request.form["comment"]
 
-    return redirect("/results")
+    if errors:
+        return redirect("/")
+    else:
+        return redirect("/results")
 
 
 

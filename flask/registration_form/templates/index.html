@@ -1,34 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
-  <style>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <style>
 
-  </style>
-  <script src="http://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>  
-  <script type="text/javascript">
+    </style>
+    <script src="http://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>  
+    <script type="text/javascript">
 
-    (document).ready(function(){
-      console.log("jQuery has loaded properly")
+        (document).ready(function(){
+            console.log("jQuery has loaded properly")
 
-      
+            
 
-    });
+        });
 
     </script>
-  <title>Registration Form</title>
+    <title>Registration Form</title>
 </head>
 <body>
-  <h1>Registration Form</h1>
-  <form action="/process" method="post" accept-charset="utf-8">
-    Email:<input type="text" name="Email">
-    First Name:<input type="first_name" name="First Name">
-    Last Name:<input type="last_name" name="Last Name">
-    Password:<input type="password" name="Password">
-    Confirm Password:<input type="confirm_password" name="Confirm Password">
-    <input type="submit" name="Submit">
-  </form>
+    <h1>Registration Form</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="/process" method="post" accept-charset="utf-8">
+        Email:<input type="text" name="email">
+        First Name:<input type="first_name" name="first_name">
+        Last Name:<input type="last_name" name="last_name">
+        Password:<input type="password" name="password">
+        Confirm Password:<input type="confirm_password" name="confirm_password">
+        <input type="submit" name="Submit">
+    </form>
 </body>
 </html>
