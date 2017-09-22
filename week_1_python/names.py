@@ -32,6 +32,7 @@ def name_count():
   for key, value in users.iteritems():
     for index, name in enumerate(value, 1):
       print index, " - ", name["first_name"], name["last_name"], " - ", len(name["first_name"] + name["last_name"])
+      
 
 
 name_count()

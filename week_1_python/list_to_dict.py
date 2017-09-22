@@ -9,3 +9,12 @@ def list_to_dict():
   print animal_dict
 
 list_to_dict()
+
+
+# def list_to_dict(name, favorite_animal):
+
+#     spirit_animal = dict(zip(name, favorite_animal))
+
+#     print spirit_animal
+
+# list_to_dict(["Anna", "Eli", "Pariece", "Brendan", "Amy", "Shane", "Oscar"], ["horse", "cat", "spider", "giraffe", "ticks", "dolphins", "llamas"])
