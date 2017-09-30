@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+  <link rel="stylesheet" type="text/css" href="{{ styles }}">
+  <style>
+
+  </style>
+  <script src="http://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>  
+  <script type="text/javascript">
+
+    (document).ready(function(){
+      console.log("jQuery has loaded properly")
+
+      
+
+    });
+
+    </script>
+  <title>Login and Registration</title>
+</head>
+<body>
+  <h1>Welcome to the Site!</h1>
+  <hr>
+  <div class="container">
+    {% if messages %}
+    <ul>
+        {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <h2>Register</h2>
+    <form action="/register" method="post" accept-charset="utf-8">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input class="form-control" type="text" name="username">   
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input class="form-control" type="password" name="password">   
+        </div>
+        <div class="form-group">
+            <label for="confirm_password">Confirm Password</label>
+            <input class="form-control" type="password" name="confirm_password">   
+        </div>
+        <input type="submit" name="Register">
+    </form>
+    <h2>Login</h2>
+    <form action="/login" method="post" accept-charset="utf-8">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input class="form-control" type="text" name="username">   
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input class="form-control" type="password" name="password">   
+        </div>
+        <input type="submit" name="Login">
+    </form>
+      
+  </div>
+</body>
+</html>
