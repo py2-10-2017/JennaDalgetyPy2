@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
-  <link rel="stylesheet" type="text/css" href="{{ style }}">
   <style>
 
   </style>
@@ -20,6 +19,8 @@
 
     </script>
   <title>Email Validation</title>
+   {% load static %}
+      <link rel="stylesheet" href="{% static 'email_valid/static/style.css' %}">
 </head>
 <body>
   <div id="container">

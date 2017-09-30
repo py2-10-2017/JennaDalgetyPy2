@@ -46,7 +46,10 @@ def register():
     data = {
         "some_email": request.form["email"],
     }
+
     mysql.query_db(query, data)
+
+    session["email"] = request.form["email"]
 
     flash("succesfully registered", "success")
     return redirect("/success")
@@ -55,15 +58,17 @@ def register():
 
 @app.route("/success")
 def success():
-    if "id" not in session:
-        return redirect("/")
-    query = "SELECT * FROM users WHERE id = :some_id"
-    data = {
-        "some_id": session["id"]
-    }
+
+    success_query = "SELECT * FROM users"
+
+    query_results = mysql.query_db(success_query)
+
     flash_messages = get_flashed_messages(with_categories=True)
+
+    flash("The email address you entered ({}) is a VALID email address!  Thank you!".format(session["email"]), "success")
+
     staticfile = url_for("static", filename="style.css")
-    return render_template("success.html", user=user_from_query[0], messages=flash_messages)
+    return render_template("success.html", users=query_results, messages=flash_messages)
 
 
 

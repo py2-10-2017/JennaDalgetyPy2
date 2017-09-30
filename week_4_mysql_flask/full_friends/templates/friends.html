@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
-  <link rel="stylesheet" type="text/css" href="{{ style }}">
   <style>
 
   </style>
@@ -19,24 +18,17 @@
     });
 
     </script>
-  <title>Success Page</title>
+  <title>Edit Page</title>
 </head>
 <body>
-    <div class="messages">
-        {% if messages %}
-        <ul>
-        {% for category, message in messages %}
-            <li class="{{ category }}">{{ message }}</li>
-        {% endfor %}
-        </ul>
-        {% endif %}
-    </div>
-    <div class="registered_emails">
-        <h2>Email Addresses Entered:</h2>
-        {% for user in users %}
-        <li>{{ user["email"] }} {{ user["created_at"] }}</li>
-        {% endfor %}
-    </div>
-  
+    <form action="/friends/<id>/edit" method="post" accept-charset="utf-8">
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name">
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name">
+        <label for="email">Email:</label>
+        <input type="text" name="email">
+        <input type="submit" name="Update">
+    </form>
 </body>
 </html>
