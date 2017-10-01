@@ -20,7 +20,7 @@ def index():
 
     flash_messages = get_flashed_messages(with_categories=True)
     staticfile = url_for("static", filename="style.css")
-    return render_template("index.html", messages = flash_messages, styles = staticfile)
+    return render_template("index.html", users=query_results, messages = flash_messages, styles = staticfile)
 
 
 

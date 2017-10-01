@@ -41,15 +41,15 @@
             </tr>
         </thead>
         <tbody>
+            {% for user in users %}
             <tr>
-                {% for user in users %}
                 <td>{{ user["first_name"] }}</td>
-                <td>{{ user["Last_name"] }}</td>
+                <td>{{ user["last_name"] }}</td>
                 <td>{{ user["email"] }}</td>
-                <button type="submit"><a href="/friends/<id>/edit"></a>Edit</button>
-                <button type="submit"><a href="/friends/<id>/delete"></a>Delete</button>
-                {% endfor %}
+                <td><button type="submit"><a href="/friends/<id>/edit"></a>Edit</button>
+                <button type="submit"><a href="/friends/<id>/delete"></a>Delete</button></td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
     <form action="/friends" method="post" accept-charset="utf-8">
