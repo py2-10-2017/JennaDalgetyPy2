@@ -82,6 +82,8 @@ def edit(id):
         "some_id": session["id"]
     }
 
+    edit_query = ""
+
 
     staticfile = url_for("static", filename="style.css")
     return render_template("friends.html", user=user_from_query[0], messages=flash_messages)

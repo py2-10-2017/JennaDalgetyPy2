@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
-  <link rel="stylesheet" type="text/css" href="{{ style }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="style.css") }}">
   <style>
 
   </style>
@@ -22,21 +22,24 @@
   <title>Success Page</title>
 </head>
 <body>
-    <div class="messages">
-        {% if messages %}
-        <ul>
-        {% for category, message in messages %}
-            <li class="{{ category }}">{{ message }}</li>
-        {% endfor %}
-        </ul>
-        {% endif %}
+  <div id="wrapper">
+    <div id="container">
+      <div class="messages">
+          {% if messages %}
+          <ul>
+          {% for category, message in messages %}
+              <h3><li class="confirm_message">{{ message }}</li></h3>
+          {% endfor %}
+          </ul>
+          {% endif %}
+      </div>
+      <div class="registered_emails">
+          <h2>Email Addresses Entered:</h2>
+          {% for user in users %}
+          <li class="user_list">{{ user["email"] }} {{ user["created_at"] }}</li>
+          {% endfor %}
+      </div>
     </div>
-    <div class="registered_emails">
-        <h2>Email Addresses Entered:</h2>
-        {% for user in users %}
-        <li>{{ user["email"] }} {{ user["created_at"] }}</li>
-        {% endfor %}
-    </div>
-  
+  </div>
 </body>
 </html>

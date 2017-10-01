@@ -23,9 +23,7 @@ def index():
 def register():
     errors = []
 
-    if not EMAIL_REGEX.match(request.form["email"]):
-        errors.append("Email is not valid!")
-    if len(request.form["email"]) < 1:
+    if not EMAIL_REGEX.match(request.form["email"]) or len(request.form["email"]) < 1:
         errors.append("Email is not valid!")
 
     query = "SELECT * FROM users WHERE email = :some_email"

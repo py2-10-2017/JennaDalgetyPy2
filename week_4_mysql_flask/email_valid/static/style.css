@@ -1,7 +1,34 @@
-.validator{
-    background-color: blue;
+#wrapper{
+    width: 900px;
 }
-
+#container{
+    /*position: relative;
+    left: 50%;
+    bottom: 40%;*/
+}
+.validator{
+    width: 200px;
+}
+.error_box{
+    color: white;
+    background-color: red;
+    width: 350px;
+}
+.error_message{
+    padding-left: 30px;
+    list-style: none;
+}
 .messages{
     background-color: green;
+}
+.confirm_message{
+    list-style: none;
+    padding-left: 30px;
+}
+.user_list{
+    list-style: none;
+    padding-left: 20px;
+}
+h2{
+    text-decoration: underline;
 }
