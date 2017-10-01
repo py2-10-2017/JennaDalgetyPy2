@@ -36,13 +36,13 @@ def create():
     elif not request.form["first_name"].isalpha():
         errors.append("Name cannot contain numbers")
 
-    if len(request.form["Last_name"]) < 1:
+    if len(request.form["last_name"]) < 1:
         errors.append("Must enter a last name")
     elif not request.form["last_name"].isalpha():
         errors.append("Name cannot contain numbers")
 
-    if mysql.query_db(query, data):
-        errors.append("user already exists")
+    # if mysql.query_db(query, data):
+    #     errors.append("user already exists")
 
     if errors:
         for e in errors:
@@ -75,7 +75,7 @@ def create():
 
 
 
-@app.route("/friends/<id>/edit")
+@app.route("/friends/<id>/edit", methods=["POST"])
 def edit(id):
 
     if "id" not in session:
