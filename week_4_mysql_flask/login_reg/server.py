@@ -123,21 +123,23 @@ def login():
 
 
 @app.route("/success")
-def success(id):
+def success():
 
-    # if "id" not in session:
-    #     return redirect("/")
+    query = "SELECT * FROM users WHERE id = :friend"
 
-    query = "SELECT first_name FROM users WHERE id = friend[id]"
-    data = {
-        "first_name": session["first_name"]
-    }
+    data = {"friend": session["id"]}
 
     user_from_query = mysql.query_db(query, data)
 
     flash_messages = get_flashed_messages(with_categories=True)
     staticfile = url_for("static", filename="style.css")
     return render_template("success.html", user=user_from_query[0], messages=flash_messages, styles=staticfile)
+
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/")
 
 
 
