@@ -13,6 +13,11 @@ mysql = MySQLConnector(app, "full_friends")
 
 @app.route("/")
 def index():
+
+    success_query = "SELECT * FROM users"
+
+    query_results = mysql.query_db(success_query)
+
     flash_messages = get_flashed_messages(with_categories=True)
     staticfile = url_for("static", filename="style.css")
     return render_template("index.html", messages = flash_messages, styles = staticfile)
