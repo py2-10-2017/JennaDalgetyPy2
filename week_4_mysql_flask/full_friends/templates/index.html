@@ -21,6 +21,15 @@
   <title>Full Friends App</title>
 </head>
 <body>
+  <div class="error_box">
+        {% if messages %}
+        <ul>
+        {% for category, message in messages %}
+          <h3><li class="error_message">{{ message }}</li></h3 >
+        {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
     <table>
         <h2>Full Friends</h2>
         <thead>
