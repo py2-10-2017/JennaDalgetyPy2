@@ -22,6 +22,15 @@
   <title>Edit Page</title>
 </head>
 <body>
+    <div class="error_box">
+        {% if messages %}
+        <ul>
+        {% for category, message in messages %}
+          <h3><li class="error_message">{{ message }}</li></h3 >
+        {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
     <form action="/friends/<id>/edit" method="post" accept-charset="utf-8">
         <label for="first_name">First Name:</label>
         <input type="text" name="first_name">

@@ -21,6 +21,9 @@ def index():
 
 @app.route("/friends", methods=["POST"])
 def create():
+
+    print("in create route")
+
     errors = []
 
     if not EMAIL_REGEX.match(request.form["email"]):
@@ -38,13 +41,6 @@ def create():
     elif not request.form["last_name"].isalpha():
         errors.append("Name cannot contain numbers")
 
-    query = "SELECT * FROM users WHERE first_name = :some_firstname, last_name = :some_lastname, email = :some_email"
-    data = {
-        "some_firstname": request.form["first_name"],
-        "some_lastname": request.form["last_name"],
-        "some_email": request.form["email"]
-    }
-
     if mysql.query_db(query, data):
         errors.append("user already exists")
 
@@ -53,14 +49,22 @@ def create():
             flash(e, "error")
         return redirect("/")
 
-    query = "INSERT INTO users (first_name, last_name, email, created_at, updated_at)\
+    show_query = "SELECT * FROM users WHERE first_name = :some_firstname, last_name = :some_lastname, email = :some_email"
+    data = {
+        "some_firstname": request.form["first_name"],
+        "some_lastname": request.form["last_name"],
+        "some_email": request.form["email"]
+    }
+    mysql.query_db(show_query, data)
+
+    add_user_query = "INSERT INTO users (first_name, last_name, email, created_at, updated_at)\
             VALUES (:some_firstname, :some_lastname, :some_email, NOW(), NOW())"
     data = {
         "some_firstname": request.form["first_name"],
         "some_lastname": request.form["last_name"],
         "some_email": request.form["email"]
     }
-    mysql.query_db(query, data)
+    mysql.query_db(add_user_query, data)
 
     ession["id"] = friend[0]["id"]
     sesion["first_name"] = request.form["first_name"]
