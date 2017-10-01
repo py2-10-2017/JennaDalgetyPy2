@@ -42,11 +42,13 @@
         </thead>
         <tbody>
             <tr>
-                <td>{{ first_name }}</td>
-                <td>{{ Last_name }}</td>
-                <td>{{ email }}</td>
+                {% for user in users %}
+                <td>{{ user["first_name"] }}</td>
+                <td>{{ user["Last_name"] }}</td>
+                <td>{{ user["email"] }}</td>
                 <button type="submit"><a href="/friends/<id>/edit"></a>Edit</button>
                 <button type="submit"><a href="/friends/<id>/delete"></a>Delete</button>
+                {% endfor %}
             </tr>
         </tbody>
     </table>

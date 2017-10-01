@@ -55,10 +55,13 @@ def create():
     }
     mysql.query_db(add_user_query, data)
 
-    session["id"] = friend[0]["id"]
-    sesion["first_name"] = request.form["first_name"]
-    sesion["Last_name"] = request.form["last_name"]
-    sesion["email"] = request.form["email"]
+    session["first_name"] = request.form["first_name"]
+    session["Last_name"] = request.form["last_name"]
+    session["email"] = request.form["email"]
+
+    success_query = "SELECT * FROM users"
+
+    query_results = mysql.query_db(success_query)
 
     return redirect("/")
 
