@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <style>
+
+    </style>
+    <script src="http://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>  
+    <script type="text/javascript">
+
+    (document).ready(function(){
+      console.log("jQuery has loaded properly")
+
+      
+
+    });
+
+    </script>
+    <title>Login-Registration</title>
+</head>
+<body>
+    <h2>Welcome to my app!</h2>
+    <h3>Login or Register to Browse</h3>
+    {% if messages %}
+    <ul>
+    {% for category, message in messages %}
+        <li class="error_message">{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    <form action="/register" method="post" accept-charset="utf-8">
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name">
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name">
+        <label for="email">Email:</label>
+        <input type="text" name="email">
+        <label for="password">Password:</label>
+        <input type="text" name="password">
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="text" name="confirm_password">
+        <input type="submit" name="register", value="Register">
+    </form>
+    <form action="/login" method="post" accept-charset="utf-8">
+        <label for="email">Email:</label>
+        <input type="text" name="email">
+        <label for="password">Password:</label>
+        <input type="text" name="password">
+        <input type="submit" name="login", value="Login">
+    </form>
+</body>
+</html>
