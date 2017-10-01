@@ -31,7 +31,7 @@
         </ul>
         {% endif %}
     </div>
-    <form action="/friends/<id>/edit" method="post" accept-charset="utf-8">
+    <form action="/friends/{{ user['id'] }}" method="post" accept-charset="utf-8">
         <label for="first_name">First Name:</label>
         <input type="text" name="first_name">
         <label for="last_name">Last Name:</label>

@@ -75,42 +75,49 @@ def create():
 @app.route("/friends/<id>/edit", methods=["POST"])
 def edit(id):
 
-    print("IN EDIT")
-
     user_from_query = "SELECT * FROM users WHERE id = :some_id"
+
     data = {
-        "some_id": queried_id
+        "some_id": id
     }
 
-    session["id"] = friend[0]["id"]
-
-    mysql.query_db(user_from_query, data)
-
-    edit_query = ""
-
+    user = mysql.query_db(user_from_query, data)
 
     staticfile = url_for("static", filename="style.css")
-    return render_template("friends.html", user=user_from_query[0], messages=flash_messages)
+    return render_template("friends.html", user=user[0])
 
 
 
-@app.route("/friends/<id>")
+@app.route("/friends/<id>", methods=["POST"])
 def update(id):
 
-    query = "SELECT * FROM friends WHERE id = :some_id"
-    data = {
-        "some_id": session["id"]
+    edit_query = "UPDATE users SET first_name = :updated_firstname, last_name = :updated_lastname, email = :updated_email WHERE id = :some_id"
+
+    edit_data = {
+        "updated_firstname": request.form["first_name"],
+        "updated_lastname": request.form["last_name"],
+        "updated_email": request.form["email"],
+        "some_id": id
     }
 
-@app.route("/friends/<id>/delete")
+    mysql.query_db(edit_query, edit_data)
+
+    staticfile = url_for("static", filename="style.css")
+    return redirect("/")
+
+
+@app.route("/friends/<id>/delete", methods=["POST"])
 def destroy(id):
 
-    if "id" not in session:
-        return redirect("/")
-
-    query = "SELECT * FROM friends WHERE id = :some_id"
+    query = "DELETE FROM users WHERE id = :some_id"
     data = {
-        "some_id": session["id"]
+        "some_id": id
     }
+
+    mysql.query_db(query, data)
+
+    staticfile = url_for("static", filename="style.css")
+    return redirect("/")
+
 
 app.run(debug=True)
