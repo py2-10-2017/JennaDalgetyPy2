@@ -41,7 +41,7 @@ def create():
     query = "SELECT * FROM users WHERE first_name = :some_firstname, last_name = :some_lastname, email = :some_email"
     data = {
         "some_firstname": request.form["first_name"],
-        "some_lastname": request.form["last_name"]
+        "some_lastname": request.form["last_name"],
         "some_email": request.form["email"]
     }
 
@@ -57,7 +57,7 @@ def create():
             VALUES (:some_firstname, :some_lastname, :some_email, NOW(), NOW())"
     data = {
         "some_firstname": request.form["first_name"],
-        "some_lastname": request.form["last_name"]
+        "some_lastname": request.form["last_name"],
         "some_email": request.form["email"]
     }
     mysql.query_db(query, data)
