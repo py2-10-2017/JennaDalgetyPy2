@@ -93,18 +93,16 @@ def register():
 
 
 @app.route("/login", methods=["POST"])
-def login(email):
+def login():
 
     errors = []
 
     query = "SELECT password, id FROM users WHERE email = :some_email"
     data = {
-        "some_email": email
+        "some_email": request.form["email"]
     }
    
     friend = mysql.query_db(query, data)
-
-    print("I BROKE HERE")
 
     if not friend: 
         errors.append("invalid username/password")
@@ -125,12 +123,12 @@ def login(email):
 
 
 @app.route("/success")
-def success():
+def success(id):
 
-    if "id" not in session:
-        return redirect("/")
+    # if "id" not in session:
+    #     return redirect("/")
 
-    query = "SELECT first_name FROM users WHERE first_name = :first_name"
+    query = "SELECT first_name FROM users WHERE id = friend[id]"
     data = {
         "first_name": session["first_name"]
     }
