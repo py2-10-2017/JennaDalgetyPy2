@@ -75,13 +75,16 @@ def create():
 @app.route("/friends/<id>/edit", methods=["POST"])
 def edit(id):
 
-    if "id" not in session:
-        return redirect("/")
+    print("IN EDIT")
 
-    user_from_query = "SELECT * FROM friends WHERE id = :some_id"
+    user_from_query = "SELECT * FROM users WHERE id = :some_id"
     data = {
-        "some_id": session["id"]
+        "some_id": queried_id
     }
+
+    session["id"] = friend[0]["id"]
+
+    mysql.query_db(user_from_query, data)
 
     edit_query = ""
 
@@ -93,9 +96,6 @@ def edit(id):
 
 @app.route("/friends/<id>")
 def update(id):
-
-    if "id" not in session:
-        return redirect("/")
 
     query = "SELECT * FROM friends WHERE id = :some_id"
     data = {

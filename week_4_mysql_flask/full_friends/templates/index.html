@@ -46,8 +46,12 @@
                 <td>{{ user["first_name"] }}</td>
                 <td>{{ user["last_name"] }}</td>
                 <td>{{ user["email"] }}</td>
-                <td><button type="submit"><a href="/friends/<id>/edit"></a>Edit</button>
-                <button type="submit"><a href="/friends/<id>/delete"></a>Delete</button></td>
+                <td><form action="/friends/{{ user.id }}/edit" method="post" accept-charset="utf-8">
+                <input type="submit" value="edit">
+                </form>
+                <form action="/friends/{{ user.id }}/delete" method="post" accept-charset="utf-8">
+                <input type="submit" value="delete">
+                </form></td>
             </tr>
             {% endfor %}
         </tbody>
