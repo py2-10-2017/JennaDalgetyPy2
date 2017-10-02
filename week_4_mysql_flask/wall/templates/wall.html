@@ -32,7 +32,10 @@
             <form action="/message" method="post" accept-charset="utf-8">
                 <textarea rows="4" cols="40" name="message"></textarea>
                 <input type="submit" name="submit" value="Post a message">
-            </form> 
+            </form>
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}    
         </div>
         <div class="comment">
             <p>Post a comment</p>

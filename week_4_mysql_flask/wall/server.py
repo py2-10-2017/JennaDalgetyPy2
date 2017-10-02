@@ -136,6 +136,27 @@ def wall():
     return render_template("wall.html", user=user_from_query[0], messages=flash_messages, styles=staticfile)
 
 
+@app.route("/message", methods=["POST"])
+def comment():
+
+    display_message_query= "SELECT * FROM messages"
+
+    display_query_results = mysql.query_db(display_message_query)
+
+    add_message_query = "INSERT INTO messages (user_id, message, created_at, updated_at)\
+            VALUES (:some_userid, :some_message, NOW(), NOW())"
+    data = {
+        "some_userid": session["id"],
+        "some_message": request.form["message"]
+    }
+    mysql.query_db(add_message_query, data)
+
+    session["message"] = request.form["message"]
+
+    return redirect("/wall", messages=display_query_results)
+
+
+
 @app.route("/logout")
 def logout():
     session.clear()
