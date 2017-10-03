@@ -34,19 +34,21 @@
                 <input type="submit" name="submit" value="Post a message">
             </form>
             {% for post in posts %}
-                <p>{{ post["first_name"] }} posted at {{ post["created_at"] }}:</p>
+                <p>{{ post["first_name"] }} {{ post["last_name"] }} posted at {{ post["created_at"] }}:</p>
                 <p>{{ post["message"] }}</p>
                 <div class="comment">
                     <p>Post a comment</p>
                         <form action="/comment" method="post" accept-charset="utf-8">
                         <textarea rows="3" cols="40" name="comment"></textarea>
-                        <input type="hidden" name="message_id" value="{{ message["id"] }}">
+                        <input type="hidden" name="message_id" value="{{ post['id'] }}">
                         <input type="submit" name="submit" value="Post a comment">
                     </form>
                     {% for comment in comments %}
-                        <p>{{ comment["first_name"] }} posted at {{ comment["created_at"] }}:</p>
-                        <p>{{ comment["comment"] }}</p>
-                    {% endfor %} 
+                        {% if comment['message_id'] == post['id'] %}
+                            <p>{{ comment["first_name"] }} {{ comment["last_name"] }} commented at {{ comment["created_at"] }}:</p>
+                            <p>{{ comment["comment"] }}</p>
+                        {% endif %}
+                    {% endfor %}
                 </div>
             {% endfor %}    
         </div>
