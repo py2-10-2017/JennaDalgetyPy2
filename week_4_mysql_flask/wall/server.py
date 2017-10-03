@@ -130,7 +130,7 @@ def wall():
 
     display_query_results = mysql.query_db(display_message_query)
 
-    display_comment_query = "SELECT * FROM comments\
+    display_comment_query = "SELECT users.id AS user_id, messages.id AS message_id, comments.*\
         JOIN users on comments.user_id = users.id\
         JOIN messages on comments.message_id = comments.id"
 
