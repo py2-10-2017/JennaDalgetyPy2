@@ -125,6 +125,13 @@ def login():
 @app.route("/wall")
 def wall():
 
+    # display_message_query = "SELECT users.first_name, users.last_name, messages.message, messages.created_at FROM users LEFT JOIN messages ON users.id = messages.user_id"
+
+    display_message_query = "SELECT * FROM messages\
+        JOIN users on messages.user_id = users.id"
+
+    display_query_results = mysql.query_db(display_message_query)
+
     query = "SELECT * FROM users WHERE id = :friend"
 
     data = {"friend": session["id"]}
@@ -133,15 +140,12 @@ def wall():
 
     flash_messages = get_flashed_messages(with_categories=True)
     staticfile = url_for("static", filename="style.css")
-    return render_template("wall.html", user=user_from_query[0], messages=flash_messages, styles=staticfile)
+    return render_template("wall.html", user=user_from_query[0], messages=flash_messages, posts=display_query_results, styles=staticfile)
 
 
 @app.route("/message", methods=["POST"])
 def comment():
 
-    display_message_query= "SELECT * FROM messages"
-
-    display_query_results = mysql.query_db(display_message_query)
 
     add_message_query = "INSERT INTO messages (user_id, message, created_at, updated_at)\
             VALUES (:some_userid, :some_message, NOW(), NOW())"
@@ -153,7 +157,7 @@ def comment():
 
     session["message"] = request.form["message"]
 
-    return redirect("/wall", messages=display_query_results)
+    return redirect("/wall")
 
 
 
