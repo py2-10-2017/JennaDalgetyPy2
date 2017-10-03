@@ -34,16 +34,16 @@
                 <input type="submit" name="submit" value="Post a message">
             </form>
             {% for post in posts %}
-                <p>{{ post["users.first_name"] }}</p>
+                <p>{{ post["first_name"] }} posted at {{ post["created_at"] }}:</p>
                 <p>{{ post["message"] }}</p>
+                <div class="comment">
+                    <p>Post a comment</p>
+                    <form action="/comment" method="post" accept-charset="utf-8">
+                        <textarea rows="3" cols="40" name="comment"></textarea>
+                        <input type="submit" name="submit" value="Post a comment">
+                    </form> 
+                </div>
             {% endfor %}    
-        </div>
-        <div class="comment">
-            <p>Post a comment</p>
-            <form action="/comment" method="post" accept-charset="utf-8">
-                <textarea rows="3" cols="40" name="comment"></textarea>
-                <input type="submit" name="submit" value="Post a comment">
-            </form> 
         </div>
     </div>
 </body>

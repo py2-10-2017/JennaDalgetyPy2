@@ -125,12 +125,16 @@ def login():
 @app.route("/wall")
 def wall():
 
-    # display_message_query = "SELECT users.first_name, users.last_name, messages.message, messages.created_at FROM users LEFT JOIN messages ON users.id = messages.user_id"
-
     display_message_query = "SELECT * FROM messages\
         JOIN users on messages.user_id = users.id"
 
     display_query_results = mysql.query_db(display_message_query)
+
+    display_comment_query = "SELECT * FROM comments\
+        JOIN users on comments.user_id = users.id\
+        JOIN messages on comments.message_id = comments.id"
+
+    comment_query_results = mysql.query_db(display_comment_query)
 
     query = "SELECT * FROM users WHERE id = :friend"
 
@@ -140,11 +144,11 @@ def wall():
 
     flash_messages = get_flashed_messages(with_categories=True)
     staticfile = url_for("static", filename="style.css")
-    return render_template("wall.html", user=user_from_query[0], messages=flash_messages, posts=display_query_results, styles=staticfile)
+    return render_template("wall.html", user=user_from_query[0], messages=flash_messages, posts=display_query_results, comments=display_comment_query, styles=staticfile)
 
 
 @app.route("/message", methods=["POST"])
-def comment():
+def message():
 
 
     add_message_query = "INSERT INTO messages (user_id, message, created_at, updated_at)\
@@ -156,6 +160,23 @@ def comment():
     mysql.query_db(add_message_query, data)
 
     session["message"] = request.form["message"]
+
+    return redirect("/wall")
+
+
+@app.route("/comment", methods=["POST"])
+def comment():
+
+    add_comment_query = "INSERT INTO comments (message_id, user_id, comment, created_at, updated_at)\
+            VALUES (:some_messageid, :some_userid, :some_comment, NOW(), NOW())"
+    data = {
+        "some_messageid": session["message"],
+        "some_userid": session["id"],
+        "some_comment": request.form["comment"]
+    }
+    mysql.query_db(add_comment_query, data)
+
+    session["comment"] = request.form["comment"]
 
     return redirect("/wall")
 
