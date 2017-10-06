@@ -1,0 +1,14 @@
+django-admin startproject [projectname]
+cd projectname
+mkdir apps
+cd apps
+touch __init__.py
+python ../manage.py startapp [appname]
+cd appname
+touch urls.py   <-- import views
+mkdir templates
+mkdir templates/appname
+# make sure you import app into djangoProject
+# make sure you import urls into Project urls
+
+urls --> make sure views return something

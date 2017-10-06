@@ -11,6 +11,15 @@ class User(object):
         self.logged = True
         print self.name + " is logged in"
         return self
+
+    def logout(self):
+        self.logged = False
+        print self.name + " is not logged in"
+        return self
+
+    def show(self):
+        print "My name is {}.  You can email me at {}.".format(self.name, self.email)
+        return self
 # now create an instance of the class
 new_user = User("Anna", "anna@anna.com")
 print new_user.email
@@ -23,3 +32,6 @@ User.name = "Bob"
 print "anna's name after change: ", anna.name
 bob = User()
 print "bob's name: ", bob.name
+
+
+new_user.show()
