@@ -23,9 +23,9 @@
 <body>
     <div id="wrapper">
         <div class="header">
-            <h2>Random Word (attempt #.......)</h2>
+            <h2>Random Word (attempt #{{ request.session.count }})</h2>
         </div>
-            <form action="generate_word" method="post" accept-charset="utf-8">
+            <form action="/generate_word/" method="post" accept-charset="utf-8">
                 {% csrf_token %}
                 <div class="word">
                     {{ word }}
