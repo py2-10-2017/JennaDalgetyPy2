@@ -13,7 +13,7 @@ def index(request):
     context = {
         "word": get_random_string(length=14)
     } 
-    return render(request, 'index.html', context, request.session.count)
+    return render(request, 'index.html', context, request.session["count"])
 
 def generate_word(request):
     return redirect("/")
