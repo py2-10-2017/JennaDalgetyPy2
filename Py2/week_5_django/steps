@@ -12,3 +12,19 @@ mkdir templates/appname
 # make sure you import urls into Project urls
 
 urls --> make sure views return something
+
+
+projectName
+    -apps
+        -appName
+            -templates
+                - appName
+                    index.html
+                    wall.html
+            models.py
+            views.py
+            urls.py
+    -projectName
+        settings.py
+        urls.py
+    manage.py
