@@ -7,12 +7,12 @@ def index(request):
 
 
 def process_survey(request):
-    session["name"] = request.form["name"]
-    session["location"] = request.form["location"]
-    session["language"] = request.form["language"]
-    session["comment"] = request.form["comment"]
+    request.session["name"] = request.POST["name"]
+    request.session["location"] = request.POST["location"]
+    request.session["language"] = request.POST["language"]
+    request.session["comment"] = request.POST["comment"]
 
-    return redirect('/results')
+    return redirect('/result')
 
 
 
@@ -23,10 +23,10 @@ def result(request):
         if not "count" in request.session:
             request.session["count"] = 0
     context = {
-        "name": session["name"],
-        "location": session["location"],
-        "language": session["language"],
-        "comment": session["comment"]
+        "name": request.session["name"],
+        "location": request.session["location"],
+        "language": request.session["language"],
+        "comment": request.session["comment"]
     }
 
-    return render(request, "result.html", request.session["count"], context)
+    return render(request, "result.html", request.session["count"], request.session["name"], request.session["location"], request.session["comment"], context)
