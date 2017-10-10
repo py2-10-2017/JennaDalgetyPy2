@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  {% load static %}
   <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
   <style>
 
@@ -24,19 +25,25 @@
     <form action="/survey/process" method="POST" accept-charset="utf-8">
         {% csrf_token %}
         <label>Name:</label>
-        <input type="text" name="name">
+        <div id=right>
+            <input type="text" name="name">
+        </div>
         <label>Dojo Location:</label>
-        <select name="location">
-            <option value="San Jose">San Jose</option>
-            <option value="Chicago">Chicago</option>
-            <option value="Seattle">Seattle</option>
-        </select>
+        <div id=right>
+             <select name="location">
+                <option value="San Jose">San Jose</option>
+                <option value="Chicago">Chicago</option>
+                <option value="Seattle">Seattle</option>
+            </select>
+        </div>
         <label>Favorite Language:</label>
+        <div id=right>
             <select name="language" >
                 <option value="Python">Python</option>
                 <option value="HTML">HTML</option>
                 <option value="Ruby">Ruby</option>
             </select>
+        </div>
         <label>Comment (optional):</label>
         <textarea name="comment" rows="5", cols="35"></textarea>
         <input type="submit" name="submit">

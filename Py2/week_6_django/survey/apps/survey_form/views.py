@@ -23,10 +23,11 @@ def result(request):
         if not "count" in request.session:
             request.session["count"] = 0
     context = {
+        "count": request.session["count"],
         "name": request.session["name"],
         "location": request.session["location"],
         "language": request.session["language"],
         "comment": request.session["comment"]
     }
 
-    return render(request, "result.html", request.session["count"], request.session["name"], request.session["location"], request.session["comment"], context)
+    return render(request, "result.html", context)
