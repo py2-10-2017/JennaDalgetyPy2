@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static "result_style.css" %}">
   <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
   <style>
 
@@ -25,28 +26,29 @@
     <div id="submission_count">
         <p>Thanks for submitting this form! You have submitted this form {{ request.session.count }} times now.
     </div>
-    <div>
-        <h4>Submitted Info</h4>
-    </div>
-    <div id="returned_info">
-        <div class="info">
-            <p class="left">Name: </p>
-            <p class="right">{{ name }}</p>
+    <div id="return_display">   
+        <div>
+            <h4>Submitted Info</h4>
         </div>
-        <div class="info">
-            <p class="left">Location: </p>
-            <p class="right">{{ location }}</p>
+        <div id="returned_info">
+            <div class="info">
+                <p class="left">Name: </p>
+                <p class="right">{{ name }}</p>
+            </div>
+            <div class="info">
+                <p class="left">Location: </p>
+                <p class="right">{{ location }}</p>
+            </div>
+            <div class="info">
+                <p class="left">Language: </p>
+                <p class="right">{{ language }}</p>
+            </div>
+            <div class="info">
+                <p class="left">Comment: </p>
+                <p class="right">{{ comment }}</p>
+            </div>
+            <button><a href="/">GO BACK</a></button>
         </div>
-        <div class="info">
-            <p class="left">Language: </p>
-            <p class="right">{{ language }}</p>
-        </div>
-        <div class="info">
-            <p class="left">Comment: </p>
-            <p class="right">{{ comment }}</p>
-        </div>
-        <button><a href="/">GO BACK</a></button>
-    </div>
     </div>
 </body>
 </html>

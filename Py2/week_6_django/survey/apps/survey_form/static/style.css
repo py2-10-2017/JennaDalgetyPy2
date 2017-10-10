@@ -18,8 +18,7 @@ label{
   float: left;
 }
 input{
-  position: absolute;
-  left: 150px;
+  position: relative;
   bottom: 0px;
   background-color: #2196f3;
   box-shadow: 5px 5px 2px #888888;
