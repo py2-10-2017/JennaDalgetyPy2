@@ -1,0 +1,8 @@
+#wrapper{
+    margin-top: 13%;
+    position: relative;
+    left: 33%;
+}
+td, tr{
+    padding: 15px;
+}

@@ -2,7 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
+  {% load static %}
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static "checkout_style.css" %}">
   <style>
 
   </style>
@@ -21,10 +23,12 @@
   <title></title>
 </head>
 <body>
-    <h2>Thank you for your business!</h2>
-    <h3>We charged your card {{ sale_total }}</h3>
-    <h3>You have ordered {{ product_count }} items so far and spent {{ product_sum }} with Amadon.com!</h3>
-    <a href="/">Go back</a>
-    <p><a href="/clear">Clear Session</a></p>
+    <div id="wrapper">
+      <h2>Thank you for your business!</h2>
+      <h3>We charged your card {{ sale_total }}</h3>
+      <h3>You have ordered {{ product_count }} item(s) so far and spent {{ product_sum }} with Amadon.com!</h3>
+      <a href="/">Go back</a>
+      <!-- <p><a href="/clear">Clear Session</a></p> -->
+    </div>
 </body>
 </html>

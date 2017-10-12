@@ -27,9 +27,7 @@ def buy(request):
            request.session["product_count"] = 0
     for product_type in request.session["items"]:
         if int(product_type["product_id"]) == int(request.POST["product_id"]):
-                print product_type["product_id"]
-                print request.POST["product_id"]
-                request.session["cost"] = int(request.POST["quantity"]) * int(product_type["product_price"])
+                request.session["cost"] = int(request.POST["quantity"]) * float(product_type["product_price"])
     request.session["product_count"] += int(request.POST["quantity"])
     request.session["product_sum"] += request.session["cost"]
 
