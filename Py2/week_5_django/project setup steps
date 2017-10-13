@@ -1,0 +1,49 @@
+- start virtualenv: virtualenv djangoEnv (djangoEnv is variable name)
+- source djangoEnv/bin/activate
+- (in venv) pip install django
+
+django-admin startproject [projectname]
+cd [projectname]
+mkdir apps
+cd apps
+python ../manage.py startapp [appname]
+cd [appname]
+touch __init__.py
+touch urls.py (this is the one that should be in your apps/[appname] folder; not automatically created; referred to by me as urls2)
+mkdir static
+mkdir templates
+mkdir templates/appname
+
+in settings.py - add 'apps.[appname]' to list of installed apps
+in urls.py - should look similar to this:
+    from django.conf.urls import url, include
+    from django.contrib import admin
+
+    urlpatterns = [
+        url(r'^', include('apps.amadon_app1.urls')),
+    ]
+in urls2 - should start with something like this:
+    from django.conf.urls import url
+    from . import views
+    urlpatterns = [
+        url(r'^$', views.index)
+    ]
+
+- to run on locathost:8000 - python manage.py runserver
+ 
+
+
+projectName
+    -apps
+        -appName
+            -templates
+                - appName
+                    index.html
+                    wall.html
+            models.py
+            views.py
+            urls.py
+    -projectName
+        settings.py
+        urls.py
+    manage.py
