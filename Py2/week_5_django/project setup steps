@@ -6,13 +6,16 @@ django-admin startproject [projectname]
 cd [projectname]
 mkdir apps
 cd apps
+touch __init__.py
 python ../manage.py startapp [appname]
 cd [appname]
 touch __init__.py
 touch urls.py (this is the one that should be in your apps/[appname] folder; not automatically created; referred to by me as urls2)
 mkdir static
 mkdir templates
-mkdir templates/appname
+mkdir templates/[appname]
+cd templates/[appname]
+touch index.html
 
 in settings.py - add 'apps.[appname]' to list of installed apps
 in urls.py - should look similar to this:
