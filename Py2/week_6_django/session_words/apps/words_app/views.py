@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse
 import datetime
-from django.utils.datastructures import MultiValueDictKeyError
 
 # Create your views here.
 def index(request):
@@ -8,26 +7,16 @@ def index(request):
 
 
 def choices(request):
-    try:
-        request.session["word"] = request.POST["word"]
-    except MultiValueDictKeyError: 
-        request.session["word"] = False
-    try:
-        request.session["color_red"] = request.POST["color_red"]
-    except MultiValueDictKeyError:
-        request.session["color_red"] = False
-    try:    
-        request.session["color_green"] = request.POST["color_green"]
-    except MultiValueDictKeyError:
-        request.session["color_green"] = False
-    try:    
-        request.session["color_blue"] = request.POST["color_blue"]
-    except MultiValueDictKeyError:
-        request.session["color_blue"] = False
-    try:    
-        request.session["big_font"] = request.POST["big_font"]
-    except MultiValueDictKeyError:    
-        request.session["big_font"] = False
+    if request.POST.get("word"):
+        request.session["word"] = request.POST.get("word")
+    if request.POST.get("color_red"):
+        request.session["color_red"] = request.POST.get("color_red")  
+    if request.POST.get("color_green"):
+        request.session["color_green"] = request.POST.get("color_green")
+    if request.POST.get("color_blue"):
+        request.session["color_blue"] = request.POST.get("color_blue") 
+    if request.POST.get("big_font"):
+        request.session["big_font"] = request.POST.get("big_font")
 
     context = {
         "words": request.session["word"],
@@ -37,6 +26,8 @@ def choices(request):
         "big_font": request.session["big_font"],
         "time": datetime.datetime.now()
     }
+
+    print("through context")
 
     return redirect("/session_words", context)
 

@@ -44,7 +44,7 @@
             </form>
         </div>
         <div class="output_box">
-            <button type="submit"><a href="/clear">Clear Session</a></button>
+            <!-- <button type="submit"><a href="/clear">Clear Session</a></button>
             {% if request.session.color_red %}
                 <span class="{{ color_red }}">
             {% elif request.session.color_green %}
@@ -52,12 +52,12 @@
             {% elif request.session.color_blue %}
                 <span class="{{ color_red }}">
             {% elif request.session.big_font %}
-                <span class="{{ big_font }}">
+                <span class="{{ big_font }}"> -->
                 {% for word in words %}
                     <p>{{ word }} - added {{ time }}</p>
                 {% endfor %}
                 </span>
-            {% endif %}
+<!--             {% endif %} -->
         </div>
     </div>
 </body>
