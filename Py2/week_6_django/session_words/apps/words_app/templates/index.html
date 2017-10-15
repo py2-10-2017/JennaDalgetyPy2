@@ -40,24 +40,16 @@
                     <input type="radio" name="color_blue" value="Blue"> Blue
                 </span>
                 <input class="fonts" type="checkbox" name="big_font"> show in BIG fonts!
+                </span>
+                
                 <input class="submit" type="submit" name="submit" value="Add to Session">
             </form>
         </div>
         <div class="output_box">
-            <!-- <button type="submit"><a href="/clear">Clear Session</a></button>
-            {% if request.session.color_red %}
-                <span class="{{ color_red }}">
-            {% elif request.session.color_green %}
-                <span class="{{ color_blue }}">
-            {% elif request.session.color_blue %}
-                <span class="{{ color_red }}">
-            {% elif request.session.big_font %}
-                <span class="{{ big_font }}"> -->
-                {% for word in words %}
-                    <p>{{ word }} - added {{ time }}</p>
-                {% endfor %}
-                </span>
-<!--             {% endif %} -->
+            <button type="submit"><a href="/clear">Clear Session</a></button>
+            {% for word in words %}
+                <p>{{ word }} - added on {{ time }}</p>
+            {% endfor %}
         </div>
     </div>
 </body>
