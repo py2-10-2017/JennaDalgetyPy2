@@ -1,9 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse, redirect
 from decimal import Decimal
 
 # Create your views here.
-from django.shortcuts import render, HttpResponse, redirect
-
 def index(request):
     request.session["items"] = [
         {"product_name": "Dojo Tshirt", "product_price": 19.99, "product_id": 100},
