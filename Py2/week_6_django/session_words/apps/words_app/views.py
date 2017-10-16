@@ -7,9 +7,13 @@ def index(request):
     if "word" not in request.session:
         request.session["word"] = []
 
+    if "style" not in request.session:
+        request.session["style"] = []
+
 
     context = {
         "words": request.session["word"],
+        "styles":request.session["style"],
         "time": datetime.datetime.now()
     }
 
@@ -19,11 +23,12 @@ def index(request):
 def choices(request):
     request.session["word"].append(request.POST["word"])
 
-    styles = {
-        
-    }
-
-
+    if request.POST.get("color_red") is not None:
+        request.session["style"].append(request.POST["color_red"])
+    if request.POST.get("color_green") is not None:
+        request.session["style"].append(request.POST["color_green"])
+    if request.POST.get("color_blue") is not None:
+        request.session["style"].append(request.POST["color_blue"])
 
     request.session.modified = True
 
