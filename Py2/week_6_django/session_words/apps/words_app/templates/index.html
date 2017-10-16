@@ -31,15 +31,15 @@
                 <input type="text" name="word" size="40">
                 <label>Choose color</label>
                 <span class="radio">
-                    <input type="radio" name="color_red" value="Red"> Red
+                    <input type="radio" name="color" value="Red"> Red
                 </span>
                 <span class="radio">
-                    <input type="radio" name="color_green" value="Green"> Green
+                    <input type="radio" name="color" value="Green"> Green
                 </span>
                 <span class="radio">
-                    <input type="radio" name="color_blue" value="Blue"> Blue
+                    <input type="radio" name="color" value="Blue"> Blue
                 </span>
-                <input class="fonts" type="checkbox" name="big_font"> show in BIG fonts!
+                <input class="fonts" type="checkbox" name="uppercase"> show in BIG fonts!
                 </span>
                 
                 <input class="submit" type="submit" name="submit" value="Add to Session">
@@ -47,8 +47,8 @@
         </div>
         <div class="output_box">
             <button type="submit"><a href="/clear">Clear Session</a></button>
-            {% for word in words %}
-                <p><font color="{{ styles }}">{{ word }}</font> - added on {{ time }}</p>
+            {% for w in words %}
+                <p><span class="{{ w.color }}">{{ w.word }}</span> - added on {{ time }}</p>
             {% endfor %}
         </div>
     </div>

@@ -2,18 +2,15 @@ from django.shortcuts import render, redirect, HttpResponse
 import datetime
 
 # Create your views here.
-def index(request):
-    
+def index(request):   
     if "word" not in request.session:
         request.session["word"] = []
 
-    if "style" not in request.session:
-        request.session["style"] = []
-
+    if "color" not in request.session:
+        request.session["color"] = []
 
     context = {
         "words": request.session["word"],
-        "styles":request.session["style"],
         "time": datetime.datetime.now()
     }
 
@@ -21,14 +18,15 @@ def index(request):
 
 
 def choices(request):
-    request.session["word"].append(request.POST["word"])
+    word = request.POST["word"]
+    
+    if "uppercase" in request.POST:
+        word = request.POST['word'].upper()
 
-    if request.POST.get("color_red") is not None:
-        request.session["style"].append(request.POST["color_red"])
-    if request.POST.get("color_green") is not None:
-        request.session["style"].append(request.POST["color_green"])
-    if request.POST.get("color_blue") is not None:
-        request.session["style"].append(request.POST["color_blue"])
+    request.session['word'].append({
+        'word': word,
+        'color': request.POST['color'],
+    })
 
     request.session.modified = True
 
