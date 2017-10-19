@@ -32,6 +32,15 @@ def edit(request, id):
     return render(request, "edit.html", context)
 
 
+def update(request, id):
+    user_update = User.objects.get(id=id)
+    user_update.first_name = request.POST["first_name"]
+    user_update.last_name = request.POST["last_name"]
+    user_update.email = request.POST["email"]
+    user_update.save()
+    return redirect("/users/<id>")
+
+
 def destroy(request, id):
     user_destroy = User.objects.get(id=id)
     user_destroy.delete()

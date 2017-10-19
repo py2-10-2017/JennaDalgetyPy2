@@ -7,5 +7,5 @@ urlpatterns = [
     url(r'^create$', views.create),
     url(r'^(?P<id>\d+)/edit$', views.edit),
     url(r'^(?P<id>\d+)/destroy$', views.destroy),
-    # url(r'^update$', views.update)
+    url(r'^update$', views.update)
 ]

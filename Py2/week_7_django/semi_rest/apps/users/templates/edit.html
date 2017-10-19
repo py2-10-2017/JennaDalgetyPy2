@@ -22,7 +22,7 @@
 </head>
 <body>
     <h1>Edit User {{ user.id }}</h1>
-    <form action="/update" method="POST" accept-charset="utf-8">
+    <form action="update" method="POST" accept-charset="utf-8">
         {% csrf_token %}
         <label>First Name:</label>
         <input type="text" name="first_name" value="{{ user.first_name }}">
