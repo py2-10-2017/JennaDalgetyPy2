@@ -32,13 +32,13 @@ def edit(request, id):
     return render(request, "edit.html", context)
 
 
-def update(request, id):
-    user_update = User.objects.get(id=id)
+def update(request):
+    user_update = User.objects.get(id=request.POST["hidden_user_id"])
     user_update.first_name = request.POST["first_name"]
     user_update.last_name = request.POST["last_name"]
     user_update.email = request.POST["email"]
     user_update.save()
-    return redirect("/users/<id>")
+    return redirect("/users/{}".format(user_update.id))
 
 
 def destroy(request, id):

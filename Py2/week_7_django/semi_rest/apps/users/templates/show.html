@@ -25,7 +25,7 @@
     <p>Full Name: {{ user.first_name }} {{ user.last_name }}</p>
     <p>Email: {{ user.email }}</p>
     <p>Created At: {{ user.created_at }}</p>
-    <a href="">Edit</a>
-    <a href="">Delete</a>
+    <a href="{{ user.id }}/edit">Edit</a>
+    <a href="{{ user.id }}/destroy">Delete</a>
 </body>
 </html>
