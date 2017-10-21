@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <style>
+
+  </style>
+  <script src="http://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>  
+  <script type="text/javascript">
+
+    (document).ready(function(){
+      console.log("jQuery has loaded properly")
+
+      
+
+    });
+
+    </script>
+  <title>Login and Reg | Home</title>
+</head>
+<body>
+    <div class="register">
+        <h1>Registration</h1>
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+        <form action="/register" method="POST" accept-charset="utf-8">
+            {% csrf_token %}
+            <label>First Name:</label>
+            <input type="text" name="first_name">
+            <label>Last Name:</label>
+            <input type="text" name="last_name">
+            <label>Email:</label>
+            <input type="email" name="email">
+            <label>Password:</label>
+            <input type="password" name="password">
+            <label>Confirm pw:</label>
+            <input type="password" name="confirm_pw">
+            <input type="submit" name="register" value="Register">
+        </form>
+    </div>
+    <div class="login">
+        <h1>Login</h1>
+        <form action="/login" method="POST" accept-charset="utf-8">
+            {% csrf_token %}
+            <label>Email:</label>
+            <input type="email" name="email">
+            <label>Password:</label>
+            <input type="password" name="password">
+            <input type="submit" name="login" value="Login">
+        </form>
+    </div>
+</body>
+</html>
