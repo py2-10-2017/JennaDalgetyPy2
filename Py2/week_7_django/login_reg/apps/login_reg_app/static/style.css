@@ -1,0 +1,10 @@
+#wrapper{
+    padding-left: 40px;
+    width: 250px;
+}
+p{
+    color: green;
+}
+.success{
+    padding-left: 40px;
+}

@@ -54,4 +54,5 @@ def success(request):
     context = {
         "user": User.objects.get(id=request.session["id"]).first_name
     }
+    
     return render(request, "login_reg_app/success.html", context)
