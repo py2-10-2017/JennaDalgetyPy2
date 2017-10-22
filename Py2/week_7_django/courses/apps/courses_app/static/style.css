@@ -1,0 +1,42 @@
+.new_course{
+    width: 500px;
+    
+}
+.add_input{
+    margin-left: 43px;
+}
+.add_label{
+    position: relative;
+    bottom: 80px;
+}
+.add_submit{
+    color: white;
+    background-color: green;
+    margin-left: 420px;
+}
+.destroy_wrapper{
+    margin-left: 70px;
+}
+p{
+    margin-left: 200px;
+}
+.one{
+    margin-left: 100px;
+}
+.two{
+    margin-left: 55px;
+}
+.no{
+    margin-left: 250px;
+    box-shadow: 10px 10px 5px #888888;
+    display: inline-block;
+}
+.yes{
+   position: relative;
+   left: 100px;
+   top: -30px;
+   box-shadow: 10px 10px 5px #888888;
+   margin-left: 250px;
+   color: white;
+   background-color: red;
+}

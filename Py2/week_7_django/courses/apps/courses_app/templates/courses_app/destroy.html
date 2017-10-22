@@ -2,7 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
+  {% load static %}
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
   <style>
 
   </style>
@@ -21,16 +23,18 @@
   <title>Delete a course</title>
 </head>
 <body>
-    <h1>Are you sure you want to delete the following course?</h1>
-    <p>Name: {{ course.course_name }}</p>
-    <p>Description: {{ course.desc }}</p>
-    <form action="/" method="POST" accept-charset="utf-8">
-        {% csrf_token %}
-        <input type="submit" name="no" value="No">
-    </form>
-    <form action="/courses/delete/{{ course.id }}" method="POST" accept-charset="utf-8">
-        {% csrf_token %}
-        <input type="submit" name="yes" value="Yes! I want to delete this">
-    </form>
+    <div class="destroy_wrapper">
+      <h1>Are you sure you want to delete the following course?</h1>
+      <p>Name:<span class="one">{{ course.course_name }}</span></p>
+      <p>Description:<span class="two">{{ course.desc }}</span></p>
+      <form action="/" method="POST" accept-charset="utf-8">
+          {% csrf_token %}
+          <input class="no" type="submit" name="no" value="No">
+      </form>
+      <form action="/courses/delete/{{ course.id }}" method="POST" accept-charset="utf-8">
+          {% csrf_token %}
+          <input class="yes" type="submit" name="yes" value="Yes! I want to delete this">
+      </form>
+    </div>
 </body>
 </html>
