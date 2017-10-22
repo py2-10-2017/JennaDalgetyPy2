@@ -2,7 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
+  {% load static %}
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static "styles.css" %}">
   <style>
 
   </style>
@@ -21,17 +23,19 @@
   <title>Users New</title>
 </head>
 <body>
-    <h1>Add a new user</h1>
-    <form action="create" method="POST" accept-charset="utf-8">
-        {% csrf_token %}
-        <label>First Name:</label>
-        <input type="text" name="first_name">
-        <label>Last Name:</label>
-        <input type="text" name="last_name">
-        <label>Email:</label>
-        <input type="text" name="email">
-        <input type="submit" name="create" value="Create">
-    </form>
-    <a href="/users">Go Back</a>
+    <div class="add_wrapper">
+        <h1>Add a new user</h1>
+        <form action="create" method="POST" accept-charset="utf-8">
+            {% csrf_token %}
+            <label class="add_label">First Name:</label>
+            <input type="text" name="first_name">
+            <label class="add_label">Last Name:</label>
+            <input type="text" name="last_name">
+            <label class="add_label">Email:</label>
+            <input type="text" name="email">
+            <input class="add_submit" type="submit" name="create" value="Create">
+        </form>
+        <a href="/users">Go Back</a>
+    </div>
 </body>
 </html>

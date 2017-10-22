@@ -1,0 +1,28 @@
+.wrapper{
+    padding-left: 50px;
+    padding-top: 40px;
+}
+.edit_wrapper{
+    padding-left: 50px;
+    padding-top: 40px;
+    width: 240px;
+}
+.edit_label{
+    margin-top: 10px;
+}
+.edit_submit{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.add_wrapper{
+    padding-left: 50px;
+    padding-top: 40px;
+    width: 240px;
+}
+.add_label{
+    margin-top: 10px;
+}
+.add_submit{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
