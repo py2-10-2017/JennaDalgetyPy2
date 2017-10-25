@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import User
+from .models import *
 
 import re
 import bcrypt
@@ -15,7 +15,7 @@ def flash_errors(errors, request):
 
 
 def index(request):
-    return render(request, "login_reg_app/index.html")
+    return render(request, "login_reg/index.html")
 
 
 
@@ -26,10 +26,9 @@ def register(request):
         if not errors:
             hash_pw = bcrypt.hashpw(request.POST["password"].encode(), bcrypt.gensalt())
 
-            user = User.objects.create(first_name=request.POST["first_name"], last_name=request.POST["last_name"], email=request.POST["email"], password=hash_pw)
+            user = User.objects.create(first_name=request.POST["first_name"], last_name=request.POST["last_name"], email=request.POST["email"], password=hash_pw, birthdate = request.POST["birthdate"])
 
             request.session['id'] = user.id
-
 
             return redirect("/success")
 
@@ -40,13 +39,13 @@ def register(request):
 
 
 def login(request):
-    email_query = User.objects.filter(email=request.POST["email"])
-    if email_query == "": 
-        messages.error(request, "Invalid username/password")
-    elif not bcrypt.checkpw(request.POST["password"].encode(), User.objects.get(id=request.session["id"]).password.encode()):
-        messages.error(request, "Invalid username/password")
-    else:
-        request.session['id'] = user.id
+    if request.method =="POST":
+        check = User.objects.validate_login(request.POST)
+        if "user" in check:
+            request.session["id"] = check["user"].id
+            return redirect("/friends")
+        flash_errors(check["errors"], request)
+        
     return redirect("/success")
 
 
@@ -56,4 +55,4 @@ def success(request):
         "user": User.objects.get(id=request.session["id"]).first_name
     }
     
-    return render(request, "login_reg_app/success.html", context)
+    return render(request, "login_reg/success.html", context)

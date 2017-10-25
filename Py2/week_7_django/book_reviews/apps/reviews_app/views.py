@@ -1,6 +1,9 @@
+from django.shortcuts import render
+
+# Create your views here.
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import User
+from .models import *
 
 import re
 import bcrypt
@@ -15,7 +18,7 @@ def flash_errors(errors, request):
 
 
 def index(request):
-    return render(request, "login_reg_app/index.html")
+    return render(request, "reviews_app/index.html")
 
 
 
@@ -30,8 +33,7 @@ def register(request):
 
             request.session['id'] = user.id
 
-
-            return redirect("/success")
+            return redirect("/dashboard")
 
         flash_errors(errors, request)
 
@@ -47,13 +49,25 @@ def login(request):
         messages.error(request, "Invalid username/password")
     else:
         request.session['id'] = user.id
-    return redirect("/success")
+    return redirect("/dashboard")
 
 
 
-def success(request):
+def dashboard(request):
     context = {
         "user": User.objects.get(id=request.session["id"]).first_name
     }
     
-    return render(request, "login_reg_app/success.html", context)
+    return render(request, "reviews_app/dashboard.html", context)
+
+
+
+def add_book(request):
+    
+
+
+
+def logout(request):
+    def clear(request):
+    request.session.flush()
+    return redirect("/")
