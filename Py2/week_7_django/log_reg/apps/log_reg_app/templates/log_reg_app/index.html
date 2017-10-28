@@ -26,9 +26,6 @@
     <div id="wrapper">
         <div class="register">
             <h1>Registration</h1>
-            {% for message in messages %}
-                <p>{{ message }}</p>
-            {% endfor %}
             <form action="/register" method="POST" accept-charset="utf-8">
                 {% csrf_token %}
                 <label>First Name:</label>
@@ -56,6 +53,11 @@
                 <input type="password" name="password">
                 <input type="submit" name="login" value="Login">
             </form>
+        </div>
+        <div class="errors">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
         </div>
     </div>
 </body>

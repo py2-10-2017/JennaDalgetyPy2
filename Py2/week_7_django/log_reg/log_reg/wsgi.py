@@ -1,5 +1,5 @@
 """
-WSGI config for login_reg2 project.
+WSGI config for log_reg project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "login_reg2.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "log_reg.settings")
 
 application = get_wsgi_application()
